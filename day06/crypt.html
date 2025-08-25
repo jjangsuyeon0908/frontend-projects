@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열 암호화 시스템</title>
+  <style>
+    body {
+      margin: 20px;
+      font-family: sans-serif;
+    }
+
+    input, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>간단한 문자열 암호화 시스템</h1>
+
+  <label for="inputText">암복호화 할 문자열 입력 : </label>
+  <input type="text" id="inputText" placeholder="문자열 입력" />
+
+  <br />
+  <button onclick="encryptText()">암호화</button>
+  <button onclick="decryptText()">복호화</button>
+
+  <h2>결과</h2>
+  <p id="encryptedText">암호화된 텍스트 : </p>
+  <p id="decryptedText">복호화된 텍스트 : </p>
+
+  <script>
+
+    function encryptText() {
+      const inputText = document.getElementById('inputText').value;
+      const encryptElement = document.getElementById('encryptedText');
+      const decryptElement = document.getElementById('decryptedText');
+      let encryptedText = '';
+
+      // 암호화 규칙 : 아스키 코드값을 가져와서 5를 더한 값을 다시 변환
+      for(let i = 0; i < inputText.length; i++) {
+        encryptedText += String.fromCharCode(inputText.charCodeAt(i) + 5);
+      }
+
+      encryptElement.textContent = "암호화된 텍스트 : " + encryptedText;
+      decryptElement.textContent = "복호화된 텍스트 : ";
+    }
+
+    function decryptText() {
+      const encryptElement = document.getElementById('encryptedText');
+      const decryptElement = document.getElementById('decryptedText');
+
+      let encryptedText = encryptElement.textContent.replace(/^암호화된 텍스트 : /, '');
+      let decryptedText = '';
+
+      if(encryptedText.trim() == '') return;
+
+      for(let i = 0; i < encryptedText.length; i++) {
+        decryptedText += String.fromCharCode(encryptedText.charCodeAt(i) - 5);
+      }
+
+      decryptElement.textContent = "복호화된 텍스트 : " + decryptedText;
+    }
+
+  </script>
+</body>
+</html>
