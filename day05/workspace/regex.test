@@ -1,0 +1,68 @@
+Hello there! My email address is example.user12test3@example.com,  
+and you can also reach me at test-email@domain.co.uk.  
+
+I live in San Francisco, CA 94103.  
+My phone numbers are +1-800-555-1234 and (415) 555-6789.  
+\n
+Visit my website at https://www.example.com  
+or http://example.org/test-page.  
+
+Did you know that 42 is the answer to life,  
+the universe, and everything?  
+
+I paid $123.45 for a nice gadget on 01/15/2025,  
+which was shipped on 01-16-2025.  
+
+Some random text: @#$%^&*()_+!~.  
+
+By the way, the quick brown fox jumps over the lazy dog 123 times.  
+
+Here is a list of students:  
+name: John Doe, age: 21, email: john.doe@example.com  
+name: Jane Smith, age: 22, email: jane.smith@example.org
+name: Alice Johnson, age: 20, email: alice20@gmail.com  
+name: Bob Brown, age: 23, email: bob.brown22@university.edu  
+
+Some repeated data:  
+Invoice #001: $250.00 paid on 2025-01-01  
+Invoice #002: $125.50 paid on 2025-01-02  
+Invoice #003: $89.99 paid on 2025-01-03  
+
+Random alphanumeric strings:  
+A1B2C3D4E5  
+X9Y8Z7W6V5U4T3S2  
+
+Repeated names and ages for testing:  
+name: Chris, age: 19  
+name: Pat, age: 24  
+name: Jordan, age: 18  
+name: Alex, age: 22  
+
+Logs from a system:  
+[2025-01-15 12:00:00] INFO: System started  
+[2025-01-15 12:01:00] ERROR: Missing configuration file  
+[2025-01-15 12:02:00] WARNING: Low memory detected  
+[2025-01-15 12:03:00] INFO: User logged in successfully  
+[2025-01-15 12:04:00] INFO: Scheduled backup started  
+[2025-01-15 12:05:00] WARNING: High CPU usage detected  
+[2025-01-15 12:06:00] INFO: New configuration applied  
+12025-01-15 12:07:00] INFO: Service restarted  
+[2025-01-15 12:08:00] ERROR: Unable to connect to database  
+[2025-01-15 12:09:00] WARNING: Disk usage at 85%  
+[2025-01-15 12:10:00] INFO: Update check completed  
+[2025-01-15 12:11:00] INFO: File uploaded successfully  
+[2025-01-15 12:12:00] WARNING: Network latency detected  
+[2025-01-15 12:13:00] INFO: New user registered  
+[2025-01-15 12:14:00] ERROR: File not found: /tmp/config.json  
+[2025-01-15 12:15:00] INFO: Scheduled task completed  
+[2025-01-15 12:16:00] INFO: Memory usage within acceptable range  
+[2025-01-15 12:17:00] WARNING: Low disk space  
+[2025-01-15 12:18:00] INFO: Daily summary generated  
+[2025-01-15 12:19:00] INFO: Security scan completed successfully  
+[2025-01-15 12:20:00] INFO: System uptime: 12 hours  
+[2025-01-15 12:21:00] WARNING: Unusual login attempt detected  
+[2025-01-15 12:22:00] INFO: Database backup completed  
+[2025-01-15 12:23:00] ERROR: Permission denied while accessing /etc/hosts  
+[2025-01-15 12:24:00] INFO: Log rotation completed  
+
+This text includes a variety of patterns for regular expression practice!
