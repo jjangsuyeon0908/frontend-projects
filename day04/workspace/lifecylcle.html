@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // DOM 이 완전히 로드 되기 전 실행
+    console.log('로딩 단계에서 실행 1');
+
+    // DOM 이 완전히 로드 된 후 실행
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log('실행 단계에서 실행 1');
+      const message = document.createElement("div");
+      message.textContent = "DOM 로드 후 생성된 메시지입니다.";
+      document.body.appendChild(message);
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log('실행 단계에서 실행 2');
+    });
+
+    // DOM 이 완전히 로드 된 후 실행
+    window.onload = function() {
+      console.log("실행 단계에서 실행 3");
+    };
+
+    // 페이지를 떠나기 전에 발생하는 이벤트
+    window.onbeforeunload = function() {
+      console.log("소멸 단계에서 실행 1");
+
+      // return false;
+    };
+
+    // 페이지를 종료할 때 발생하는 이벤트
+    window.onunload = function() {
+      const text = "소멸 단계에서 실행 2";
+      const blob = new Blob([text], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'unload_event_log.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</head>
+<body>
+  <h1>자바스크립트 생명주기 예제</h1>
+  <button id="removeButton">페이지 내용 제거</button>
+  <script>
+    // DOM 이 완전히 로드 되기 전 실행
+    console.log('로딩 단계에서 실행 2');
+
+    document.getElementById("removeButton").addEventListener("click", function() {
+      console.log('업데이트 단계에서 실행 1');
+      document.body.innerHTML = '';
+    });
+  </script>
+</body>
+</html>

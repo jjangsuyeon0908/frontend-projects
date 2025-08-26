@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="myButton">클릭하세요</button>
+  <button id="addEvent">이벤트 리스너 등록</button>
+  <button id="delEvent">이벤트 리스너 삭제</button>
+
+  <script>
+    const button = document.getElementById('myButton');
+    const addEventBtn = document.getElementById('addEvent');
+    const delEventBtn = document.getElementById('delEvent');
+
+    function handleClick() {
+      alert('클릭되었습니다.');
+    }
+
+    function printLog() {
+      console.log('클릭되었습니다.');
+    }
+
+    addEventBtn.addEventListener('click', function() {
+      button.addEventListener('click', handleClick);
+      button.addEventListener('click', printLog);
+    });
+
+    delEventBtn.addEventListener('click', function() {
+      button.removeEventListener('click', handleClick);
+
+      alert('이벤트 리스너를 삭제하였습니다.');
+    });
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="parent" style="padding: 20px; background: lightblue;">
+    부모 요소
+    <button id="child" style="margin-top: 10px;">자식 버튼</button>
+  </div>
+  <script>
+    // false : 버블링, true : 캡쳐링
+    document.getElementById('parent').addEventListener('click', function(event) {
+      alert('부모 요소');
+      
+      // 이벤트의 전파를 막는 역활
+      event.stopPropagation();
+
+    }, false);
+
+    document.getElementById('child').addEventListener('click', function(event) {
+      alert('자식 요소');
+
+      event.stopPropagation();
+    });
+  </script>
+</body>
+</html>

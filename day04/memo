@@ -1,0 +1,301 @@
+이벤트 리스너란?
+
+DOM 요소에서 발생하는 이벤트를 감지하고,
+해당 이벤트가 발생할 때 자동으로 실행되는 함수
+
+addEventListener() 메소드를 사용하여 이벤트 리스너를 등록
+
+element.addEventListener(event, callback, useCapture);
+
+event : 감지하고자 하는 이벤트의 종류 (e.g. 'click', 'keydown', 'submit' 등)
+callback : 이벤트가 발생하였을 때 호출될 함수
+useCapture: (선택사항) 이벤트 캡처링 여부 (true이면 캡처링, false이면 버블링; 기본값은 false)
+
+※ 이벤트 캡쳐링이란?
+이벤트가 전파되는 방식을 지정
+여러개의 이벤트가 지정되었을 때 전파 방식을 지정한다
+
+캡쳐링 : 이벤트가 최상위 부모 요소에서부터 자식 요소로 전파
+버블링 : 자식 요소에서 부모 요소로 전파
+
+자주 사용되는 이벤트 리스너
+
+1. 클릭 이벤트 (click)
+
+2. 마우스오버/마우스아웃 이벤트(mouseover, mouseout)
+
+- 사용자가 마우스를 요소 위에 올리거나 벗어날 때 이벤트
+
+3. 키 입력 이벤트 (keydown, keyup)
+
+- 사용자가 키보드의 키를 눌렀을때 이벤트
+
+4. 폼 제출 이벤트 (submit)
+
+5. 변경 이벤트 (change)
+
+사용자가 입력 필드나 셀렉트 박스의 값을 변경할 때 이벤트
+
+이벤트 리스너의 주요 특징
+- 하나의 요소에 여러 개의 이벤트 리스너를 등록 가능
+- 등록한 이벤트 제거 가능
+
+-----
+자바스크립트 생명주기
+
+1. 로딩 단계 (Loading Phase)
+- 웹 페이지가 로드되면 HTML, CSS, 자바스크립트 파일이 브라우저에 의해 로드
+- <script> 태그가 문서에 위치한 곳에 따라 자바스크립트가 실행
+- <head>에로 로드된 스크립트는 DOM이 완전히 로드되기 전에 실행될 수 있으며,
+  <body>끝에 위치한 스크립트는 DOM이 모두 로드된 후 실행
+
+2. 실행 단계 (Execution Phase)
+- 페이지가 로드된 후, 브라우저는 HTML 문서를 파싱하여 DOM을 구축하고, 
+  자바스크립트 코드가 실행
+- 자바스크립트가 실행되는 시점은 DOMContentLoaded 이벤트나 window.onload와 같은 이벤트에 의해 결정
+
+3. 업데이트 단계 (Update Phase)
+- DOM 에 대한 변경이 이루어질 때마다 브라우저는 다시 화면을 랜더링하여 최신상태를 화면에 반영
+- 예를들어, 자바스크립트에서 innerHTML, style, class 등을 수정하는 경우 화면에 반영되는 것을 말함
+
+4. 소멸 단계 (Destruction Phase)
+- 사용자가 페이지를 떠나거나 DOM 요소가 제거되면 해당 요소에 관련된 이벤트 리스너와 데이터들이 메모리에서 해제
+- window.onunload, window.onbeforeunload 이벤트는 페이지가 종료되거나 새로 고침될 때 발생
+
+-----
+
+null 병합 연산자
+- 좌측 값이 null 또는 undefined인 경우 우측 값을 반환
+- 그렇지 않으면 좌측 값을 반환
+
+let result = value1 ?? value2;
+- value1 이 null 또는 undefined라면 value2를 반환
+- 그렇지 않으면 value1을 반환
+
+let name = null;
+let defaultName = "Unknown";
+
+let displayName = name ?? defaultName;
+console.log(displayName);
+
+-----
+옵셔널 체이닝이란?
+- 객체의 프로퍼티에 접근하거나 메서드를 호출할 때, 안전하게 접근할 수 있도록 도와주는 연산자
+- 객체의 프로퍼티가 null 또는 undefined인지 확인하고, 에러를 방지하기 위해 사용
+- 중첩된 객체 구조에서 유용하며, 값이 없더라도 에러 없이 undefined를 반환
+- 동적으로 결정될 때 대괄호([]) 및 함수 표기법을 다르게 표기
+- 쓰기에는 사용할 수 없음
+
+obj?.property : obj가 null 또는 undefined일 경우 undefined를 반환하고 그렇지 않으면 obj.property를 반환
+obj?.[expression] : 객체의 속성 이름이 동적으로 결정될 때 사용
+obj?.method() : 객체의 메서드를 호출하려고 할 때 사용되며, 객체가 존재하지 않으면 undefined를 반환
+
+1. 기본 사용법
+const user = {
+  profile: {
+    name: "Alice"
+  }
+};
+
+console.log(user.profile?.name);
+console.log(user.profile?.age);
+console.log(user.contact?.email);
+
+console.log("작업 완료!");
+
+2. 메서드 호출
+const user = {
+  greet: function() {
+    return "Hello!";
+  }
+};
+
+console.log(user.greet?.());
+console.log(user.sayHi?.());
+
+3. 배열 접근
+const users = [{ name: "Bob" }, null, { name: "Charlie" }];
+
+for(let i = 0; i < users.length; i++)
+{
+  console.log(users[i]?.name);
+}
+
+4. 동적 속성 접근
+const settings = {
+  theme: {
+    darkMode: true
+  }
+};
+
+const key = "darkMode";
+
+console.log(settings.theme?.[key]);
+console.log(settings.display?.[key]);
+
+5. 쓰기 불가
+const obj = {};
+obj?.prop = 42; // SyntaxError
+
+console.log(obj);
+
+6. 기본값 설정
+- 옵셔널 체이닝과 null 병합 연산자를 조합하면 기본값을 설정하기에 유용
+
+const user = null;
+
+console.log(user?.name ?? "Guest");
+
+-----
+
+자바스크립트 정규 표현식(Regular Expresson)이란?
+- 문자열을 검색, 매칭, 치환 등을 처리하는 강력한 도구
+- 특정 패턴을 문자열 내에서 찾아 내는 데 사용되며, 복잡한 문자열 검색과 처리를 효율적으로 할 수 있도록 함
+- RegExp 객체를 사용하여 정규식을 다루며, 정규식 리터럴이나 생성자를 통해 생성
+
+var longSent = `
+Hello there! My email address is example.user123@example.com,  
+and you can also reach me at test-email@domain.co.uk.  
+
+I live in San Francisco, CA 94103.  
+My phone numbers are +1-800-555-1234 and (415) 555-6789.  
+
+Visit my website at https://www.example.com  
+or http://example.org/test-page.  
+
+Did you know that 42 is the answer to life,  
+the universe, and everything?  
+
+I paid $123.45 for a nice gadget on 01/15/2025,  
+which was shipped on 01-16-2025.  
+
+Some random text: @#$%^&*()_+!~.  
+
+By the way, the quick brown fox jumps over the lazy dog 123 times.  
+
+Here is a list of students:  
+name: John Doe, age: 21, email: john.doe@example.com  
+name: Jane Smith, age: 22, email: jane.smith@example.org
+name: Alice Johnson, age: 20, email: alice20@gmail.com  
+name: Bob Brown, age: 23, email: bob.brown22@university.edu  
+
+Some repeated data:  
+Invoice #001: $250.00 paid on 2025-01-01  
+Invoice #002: $125.50 paid on 2025-01-02  
+Invoice #003: $89.99 paid on 2025-01-03  
+
+Random alphanumeric strings:  
+A1B2C3D4E5  
+X9Y8Z7W6V5U4T3S2  
+
+Repeated names and ages for testing:  
+name: Chris, age: 19  
+name: Pat, age: 24  
+name: Jordan, age: 18  
+name: Alex, age: 22  
+
+Logs from a system:  
+[2025-01-15 12:00:00] INFO: System started  
+[2025-01-15 12:01:00] ERROR: Missing configuration file  
+[2025-01-15 12:02:00] WARNING: Low memory detected  
+[2025-01-15 12:03:00] INFO: User logged in successfully  
+[2025-01-15 12:04:00] INFO: Scheduled backup started  
+[2025-01-15 12:05:00] WARNING: High CPU usage detected  
+[2025-01-15 12:06:00] INFO: New configuration applied  
+12025-01-15 12:07:00] INFO: Service restarted  
+[2025-01-15 12:08:00] ERROR: Unable to connect to database  
+[2025-01-15 12:09:00] WARNING: Disk usage at 85%  
+[2025-01-15 12:10:00] INFO: Update check completed  
+[2025-01-15 12:11:00] INFO: File uploaded successfully  
+[2025-01-15 12:12:00] WARNING: Network latency detected  
+[2025-01-15 12:13:00] INFO: New user registered  
+[2025-01-15 12:14:00] ERROR: File not found: /tmp/config.json  
+[2025-01-15 12:15:00] INFO: Scheduled task completed  
+[2025-01-15 12:16:00] INFO: Memory usage within acceptable range  
+[2025-01-15 12:17:00] WARNING: Low disk space  
+[2025-01-15 12:18:00] INFO: Daily summary generated  
+[2025-01-15 12:19:00] INFO: Security scan completed successfully  
+[2025-01-15 12:20:00] INFO: System uptime: 12 hours  
+[2025-01-15 12:21:00] WARNING: Unusual login attempt detected  
+[2025-01-15 12:22:00] INFO: Database backup completed  
+[2025-01-15 12:23:00] ERROR: Permission denied while accessing /etc/hosts  
+[2025-01-15 12:24:00] INFO: Log rotation completed  
+
+This text includes a variety of patterns for regular expression practice!
+`;
+
+console.log(longSent);
+
+1. 정규식 생성 방법
+
+- 리터럴 표기법
+const regex = /pattern/flags;
+
+- 생성자 표기법
+const regex = new RegExp("pattern", "flags");
+
+2. 정규식 메서드
+
+test()
+- 정규식에 해당하는 패턴이 문자열에 포함되어 있는지 확인
+- 결과는 true 또는 false
+
+let regex = /website/;
+
+console.log(regex.test(longSent));
+
+regex = /weBsite/;
+
+console.log(regex.test(longSent));
+
+match()
+- 문자열에서 정규식과 일치하는 부분의 정보를 반환
+- 변환되는 값은 플래그에 따라서 변경
+
+let regex = /name/;
+console.log(longSent.match(regex));
+
+replace()
+- 문자열의 정규식과 일치하는 부분을 파라메터로 제공한 문자열로 치환한 문자열을 반환
+
+let regex = /there/;
+console.log(longSent.replace(regex, "Everyone"));
+
+search()
+- 정규식과 일치하는 첫 번째 인덱스 반환
+
+let regex = /My/;
+console.log(longSent.search(regex));
+
+split()
+- 정규식을 기준으로 문자열을 나누어 배열로 반환
+
+let regex = / /;
+console.log(longSent.split(regex));
+
+exec()
+- 매칭된 문자열이 포함된 배열을 반환
+- 배열에는 매치된 문자열의 시작 위치, 검색된 전체 문자열을 포함
+- g플래그나 y플래그가 있을 경우 검색 상태를 유지하고 반복 호출로 순차적 탐색
+
+let regex = /web\wite/;
+console.log(regex.exec(longSent));
+
+3. 플래그
+- 정규식의 동작 방식을 제어하는 옵션
+- 각 플래그는 특정 기능을 활성화하며, 여러 플래그를 조합하여 사용
+
+g 플래그
+- 전역 검색(Global search)
+- 일치하는 패턴의 단어를 모두 반환
+
+let regex = /name/g;
+
+console.log(longSent.match(regex));
+
+i 플래그
+- 대소문자 구분하지 않음(case Insensitive)
+
+let regex = /random/ig;
+
+console.log(longSent.match(regex));

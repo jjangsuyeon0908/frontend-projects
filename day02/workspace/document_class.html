@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p class="message">첫번째 메시지</p>
+  <p class="message">두번째 메시지</p>
+  <script>
+
+    let elements = document.getElementsByClassName("message");
+
+    console.log(elements);
+
+    for(let i = 0; i < elements.length; i++)
+    {
+      elements[i].textContent = "메시지가 변경되었습니다";
+    }
+
+  </script>
+</body>
+</html>

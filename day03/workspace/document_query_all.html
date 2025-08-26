@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p class="message">첫 번째 단락</p>
+  <p class="message">두 번째 단락</p>
+  <script>
+    let elements = document.querySelectorAll(".message");
+    
+    elements.forEach((element, index) => {
+      element.textContent = `변경된 단락 ${index + 1}`;
+    });
+
+  </script>
+  
+</body>
+</html>

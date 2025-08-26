@@ -1,0 +1,532 @@
+자바스크립트 함수
+- 특정 작업을 수행하는 코드 블록
+- 반복적으로 사용되는 로직을 재사용 할 수 있도록 함
+
+1. 함수 선언
+- 함수 이름과 함께 정의하는 가장 기본적인 방법
+- 함수 선언문이라고 불리며 호이스팅에 의해 함수 정의가 코드 어디든 호출전에 사용 됨
+
+function 함수이름(매개변수1, 매개변수2, ...) 
+{
+  // 함수가 실행할 코드
+  return 반환값;
+}
+
+e.g.
+
+function greet(name)
+{
+  return `Hello, ${name}!`;
+}
+
+console.log(greet("Alice"));
+
+-----
+호이스팅 확인
+-----
+
+console.log(greet("Alice"));
+
+function greet(name)
+{
+  return `Hello, ${name}!`;
+}
+
+-----
+this 객체란?
+
+1. 전역 컨텍스트
+- 브라우저 환경에서는 전역 객체가 window
+- Node.js 환경에서는 global 객체
+
+console.log(this);
+
+function showThis()
+{
+  console.log(this);
+}
+
+const obj = {
+  name: 'Alice',
+  greet: function() {
+    console.log(this);
+    console.log(this.name);
+  }
+};
+
+2. 함수 표현식
+- 함수 표현식은 함수를 변수에 할당하는 방식
+- 선언된 함수는 이름이 없는 함수(익명 함수)가 될 수 있다
+- 호이스팅이 되지 않으므로 함수가 정의된 직후에나 호출할 수 있다
+
+const 함수이름 = function(매개변수1, 매개변수2, ...)
+{
+  // 함수가 실행할 코드
+  return 반환값;
+}
+
+e.g.
+
+const greet = function(name) 
+{
+  return `Hello, ${name}!`;
+};
+
+console.log(greet("Alice"));
+
+typeof greet; // function
+-----
+호이스팅 확인
+-----
+console.log(greet("Alice"));
+
+const greet = function(name) 
+{
+  return `Hello, ${name}!`;
+};
+
+3. 화살표 함수
+- 간견할 문법으로 함수를 작성할 수 있는 방법
+- 화살표 함수는 익명 함수로 주로 사용되며, this 바인딩에 차이가 있다
+- 함수 표현식의 종류 중 하나이기 때문에 호이스팅 되지 않는다.
+
+const 함수이름 = (매개변수1, 매개변수2, ...) => {
+    // 함수가 실행할 코드
+    return 반환값;
+};
+
+-----
+예제1 - 기본화살표 함수
+-----
+const greet = (name) => {
+  return `Hello, ${name}!`;
+};
+
+console.log(greet("Alice"));
+
+-----
+예제2 - 간단한 화살표 함수(문장이 하나일 경우 return 생략 가능)
+-----
+const greet = (name) => `Hello, ${name}!`;
+
+console.log(greet("Alice"));
+
+----
+호이스팅 확인
+----
+console.log(greet("Alice"));
+
+const greet = (name) => `Hello, ${name}!`;
+
+4. 즉시 실행 함수
+- 함수가 정의되자 마자 바로 실행되는 함수
+- 익명 함수를 사용하여 정의
+
+(function() {
+  // 즉시 실행할 코드
+})()
+
+(function(name) {
+  // 즉시 실행할 코드
+})("helo")
+
+!function() {
+  // 즉시 실행할 코드
+}();
+
+5. 매개변수 기본값
+- 함수 호출 시 매개변수가 전달되지 않으면 기본값을 사용
+- ES6에서 등장
+
+function 함수이름(매개변수1 = 기본값, 매개변수2 = 기본값)
+{
+  // 함수 실행 코드
+}
+
+function greet(name = "Guest") {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet());
+console.log(greet("Alice"));
+
+6. Rest 파라미터
+- 함수가 호출될 때 전달되는 인수의 갯수가 정해지지 않았을 때 사용
+
+function 함수이름(...매개변수들)
+{
+  // 매개 변수들은 배열로 처리됨
+}
+
+function printNum(...numbers)
+{
+  console.log(numbers);
+  console.log(numbers[0]);
+  console.log(numbers[1]);
+  console.log(numbers[2]);
+}
+
+// numbers = [1,2,3,4]
+printNum(1,2,3,4);
+
+// numbers = [5, 6]
+printNum(5,6);
+
+7. 파라미터 갯수 제한 없이 함수 호출
+- 자바스크립트 함수에서 매개변수로 전달된 인수들은 arguments 객체로 접근이 가능
+- arguments 객체는 배열처럼 보이지만 배열은 아닌 배열과 유사한 객체
+- 배열 메서드(forEach, map, filter 등) 을 사용할 수 없음
+
+function printNum()
+{
+  console.log(arguments);
+  console.log(arguments[0]);
+  console.log(arguments[1]);
+  console.log(arguments[2]);
+}
+
+printNum(1,2,3,4);
+printNum(5,6);
+
+8. 함수의 반환 값 (Return)
+- 함수는 return을 사용하여 값을 반환
+- 함수가 명시적으로 값을 반환하지 않으면, 기본적으로 undefined를 반환
+
+function add(a, b)
+{
+  return a + b;
+}
+
+const result = add(2, 3);
+
+console.log(result);
+
+function printLog()
+{
+  console.log('hello world!')
+}
+
+const result = printLog();
+
+console.log(result);
+
+-----
+
+자바스크립트의 반복문
+- 특정 조건을 만족하는 동안 또는 정해진 횟수만큼 코드를 반복 실행하는데 사용
+
+1. for 문
+- 초기화, 조건 확인, 증감 세가지 부분을 명시적으로 지정
+
+초기화: 반복문이 시작될 때 한번만 실행되는 코드
+조건: 반복문을 계속 실행하지 여부를 결정하는 조건
+증감 : 한번의 반복이 끝난 후 값을 증가 또는 감소시켜 조건을 갱신
+
+for(초기화; 조건; 증감) {
+  // 반복할 코드
+}
+
+for(let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+-----
+
+let i = 0;
+
+for(; i < 5;){
+  console.log(i);
+  i++;
+}
+-----
+
+2. while 문
+while 문은 조건이 true인 동안 코드를 계속 반복 실행
+조건이 false가 될때 까지 반복을 계속
+
+while(조건) {
+  // 반복할 코드
+}
+
+let i = 0;
+
+while(i < 5) {
+  console.log(i);
+  i++;
+}
+
+3. do...while 문
+조건을 나중에 확인
+즉, 최소 한 번은 실행이 보장되는 반복문
+
+do {
+  // 반복할 코드
+} while (조건);
+
+let i = 6;
+do {
+  console.log(i);
+  i++;
+} while(i < 5);
+
+4. for...in 문
+객체의 프로퍼티나 배열의 인덱스를 순차적으로 반복할 때 사용
+
+for(let key in object) {
+  // 객체의 각 프로퍼티를 반복하는 코드
+}
+
+let person = {
+  name: "Alice",
+  age: 30,
+  job: "developer"
+};
+
+for (let key in person) {
+  console.log(key + " : " + person[key]);
+}
+
+let numbers = [10, 20, 30];
+
+for(let index in numbers) {
+  console.log(index + " : " + numbers[index]);
+}
+
+5. for...of 문
+배열과 같은 반복 가능한 객체에 대해 순차적으로 값을 반환하며 반복
+
+for(let value of iterable) {
+  // 반복할 코드
+}
+
+let numbers = [10, 20, 30];
+
+for(let number of numbers) {
+  console.log(number);
+}
+
+6. break 문
+반복문을 즉시 종료시킬 때 사용
+
+for(let i = 0; i < 10; i++) {
+  if(i === 5) {
+    break;
+  }
+  console.log(i);
+}
+
+7. continue 문
+continue 문은 현재 반복을 종료하고, 다음 반복으로 넘어가도록 함
+
+for(let i = 0; i < 10; i++) {
+  if(i === 5) {
+    continue;
+  }
+  console.log(i);
+}
+
+-----
+자바스크립트 전개 구문(Spread Syntax Object)
+
+- 배열이나 객체와 같은 반복 가능한 데이터를 개별 요소로 펼치는 데 사용
+- 전개 구문은 세 개의 점으로 표현되며, 배열이나 객체를 복사하거나 합칠 때 유용
+- 배열이나 객체를 직접 할당해주면 같은 주소를 보게되기때문에 그것을 방지하기 위해 전개 구문을 사용
+- 배열이나 객체를 얕게 복사(shallow copy)하므로 중첩된 구조의 경우 내부 값은 여전히 원본을 참조
+
+배열 복사
+const arr1 = [1, 2, 3, 4];
+const arr2 = [...arr1];
+console.log(arr2); // [1,2,3,4]
+
+배열 병합
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+const merged = [...arr1, ...arr2];
+
+함수 호출 시 배열을 인자로 전달
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+const numbers = [1, 2, 3];
+console.log(sum(...numbers));
+
+객체 복사
+const obj1 = { a:1, b:2 };
+const obj2 = { ...obj1 };
+
+console.log(obj2);
+
+객체 병합
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+const merged = { ...obj1, ...obj2 };  // b값은 덮어씌워짐
+console.log(merged);
+
+나머지 매개변수와 전개 구문의 차이
+const arr = [1,2,3];
+console.log(...arr);  // 배열 형태가 풀림
+
+function printNumbers(...nums) {
+  console.log(nums);  // 배열 형태로 묶임
+}
+printNumbers(1,2,3);
+
+얕은 복사
+const obj1 = { a : { b : 1 }};
+const obj2 = { ...obj1 };
+
+obj2.a.b = 2;
+console.log(obj1.a.b);
+
+----
+자바스크립트 얕은 복사 / 깊은 복사
+
+1. 얕은 복사 (Shallow Copy)
+- 객체나 배열의 1단계 값만 복사
+- 복사된 데이터가 객체나 배열 같은 참조형 데이터라면, 
+  원본과 복사본이 같은 참조를 공유
+
+const obj1 = { a : 1, b: { c : 2 } };
+const obj2 = { ...obj1 };
+
+obj2.b.c = 3;
+console.log(obj1.b.c);
+
+obj2.b = { c : 99 };
+console.log(obj1.b.c);
+console.log(obj2.b.c);
+
+2. 깊은 복사
+- 깊은 복사는 객체나 배열의 모든 수준의 데이터를 재귀적으로 복사하여 
+  원본과 복사본이 완전히 독립적이게 만듬
+- 중첩된 객체나 배열도 새로운 메모리 공간에 복사
+- 원본을 변경해도 복사본에 영향이 없고, 그 반대도 마찬가지
+
+const obj1 = { a: 1, b: { c: 2 }};
+const obj2 = JSON.parse(JSON.stringify(obj1));  // 깊은 복사
+
+obj2.b.c = 3;
+console.log(obj1.b.c);
+----
+자바스크립트 작성 방법
+
+인라인(inline) 자바스크립트
+- HTML 요소의 속성에 자바스크립트 코드를 직접 작성하는 방식
+- 특정 요소에 이벤트 핸들러를 빠르게 추가할 수 있다
+
+장점
+- 빠른 적용, 간단한 작업에 적합
+
+단점
+- 코드가 HTML 과 섞여 있어 유지보수가 어렵고, 재사용성이 낮음
+- 코드가 쉽게 노출되어 보안 문제 가능성이 있음
+
+e.g.
+<button onclick="alert('hello')">Click Me!</button>
+
+내부(Internal) 자바스크립트
+- 내부 자바스크립트는 HTML 문서 내에 <script> 태그를 사용하여 작성
+- 소규모 프로젝트나 단일 페이지 문서에서 적합
+
+장점
+- HTML 문서에 포함, 별도 파일 관리 불필요
+
+단점
+- 코드가 길어지면 HTML 문서가 복잡해지고, 가독성이 떨어질 수 있다
+- 재사용이 어렵고, 여러 페이지에서 동일한 코드를 사용하려면 복사해야 한다
+
+외부(external) 자바스크립트
+- 외부 자바스크립트는 별도의 .js 파일 스크립트 파일을 작성
+- HTML 문서에서 <script> 태그를 사용해 불러오는 방식
+- 여러 HTML 문서에 동일한 자바스크립트 파일을 재사용
+
+장점
+- 재사용성, 가독성, 유지보수 용이
+
+단점
+- HTML 파일이 외부 자바스크립트 파일을 로드해야 하므로 초기 로딩시간이 
+  길어질 수 있음
+----
+다이얼로그 함수 소개
+
+1. prompt()
+
+사용자로부터 입력을 받기 위한 다이얼로그 상자를 표시
+
+let userInput = prompt("이름을 입력하세요 : ");
+console.log(userInput);
+
+장점 : 사용자 입력을 쉽게 받을 수 있음
+단점 : 디자인을 변경할 수 없고, 사용성에 제한이 있을 수 있음
+
+2. alert()
+
+사용자가 알림 메시지를 볼 수 있게하는 간단한 다이얼로그 상자
+
+console.log("before");
+
+alert("안녕하세요! 자바스크립트 알림입니다.");
+
+console.log("after");
+
+장점 : 사용자에게 빠르게 정보를 전달할 수 있다.(디버깅 용으로 많이 사용)
+단점 : 확인 버튼만 있고 추가적인 인터렉션을 제공하지 않음
+
+3. confirm()
+
+confirm()은 사용자가 "확인" 또는 "취소" 버튼을 클릭하도록 하는 다이얼로그 창을 띄움
+
+사용자가 확인을 클릭하면 true를, 취소를 클릭하면 false를 반환
+
+let userConfirm = confirm("정말로 삭제하시겠습니까?");
+
+if(userConfirm) {
+  console.log("삭제되었습니다.")
+} else {
+  console.log("삭제가 취소되었습니다.")
+}
+
+장점 : 확인 또는 취소와 같은 명확한 선택지를 제공할 수 있음
+단점 : 단순한 선택만을 제공하고, 디자인을 수정할 수 없음
+----
+콘솔 함수 소개
+
+console.log("디버깅 메시지 출력");
+
+// 에러 메시지 출력
+// 콘솔에 빨간색으로 표시
+console.error("에러 발생!");
+
+// 경고 메시지 출력
+// 콘솔에 황갈색으로 표시
+console.warn("경고 메시지!");
+
+// 정보 메시지 출력
+console.info("정보 메시지!");
+----
+document 메소드 소개
+
+1. document.write()
+
+document.write는 HTML 문서에 텍스트나 HTML 요소를 직접 삽입
+
+document.write("<h1>안녕하세요, 자바스크립트로 작성된 페이지입니다.</h1>");
+
+2. document.getElementById()
+- id를 통해 해당하는 HTML 요소를 가져오는 함수
+
+3. document.getElementsByClassName()
+- 클래스 이름을 가진 요소들을 배열로 반환
+
+4. document.getElementsByTagName()
+- 특정 태그를 가진 요소들을 배열로 반환
+
+5. document.querySelector()
+
+querySelector는 파라메터로 제공된 CSS 선택자의 첫 번째로 일치하는 요소를 반환
+
+6. document.querySelectorAll()
+
+파라메터로 제공된 CSS 선택자의 모든 요소를 반환

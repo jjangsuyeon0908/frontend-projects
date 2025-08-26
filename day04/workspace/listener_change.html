@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <select id="mySelect">
+    <option value="apple">사과</option>
+    <option value="banna">바나나</option>
+    <option value="cherry">체리</option>
+  </select>
+  <script>
+    const select = document.getElementById('mySelect');
+
+    select.addEventListener('change', function(event) {
+
+      //console.log(event);
+      // console.log(select[select.selectedIndex].innerText);
+
+      alert(`선택한 과일: ${select[select.selectedIndex].innerText}`);
+    });
+  </script>
+</body>
+</html>
