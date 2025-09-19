@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nth-child</title>
+  <style>
+    /*하나만 넣을 때*/
+    /* #container li:nth-child(1) {color: blue;} */
+
+    /*6번째 이후로 여러 개 선택할 때*/
+    /* #container li:nth-child(n+6) {color: blue;} */
+
+    /*앞에서부터 여러 개 선택할 때*/
+    /* #container li:nth-child(-n+3) {color: blue;} */
+
+    /*사이에 넣을 때*/
+    /* #container li:nth-child(n+3):nth-child(-n+7) {color: blue;} */
+    
+    /*무조건 앞에거 변경*/
+    /* #container li:first-child {color: blue;} */
+
+    /*무조건 뒤에거 변경*/
+    /* #container li:last-child {color: blue;} */
+    
+    /*뒤에서부터 숫자 세기*/
+    #container li:nth-last-child(3) {color: blue;}
+  </style>
+</head>
+<body>
+  <ul id="container">
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+    <li>container의 자식</li>
+  </ul>
+</body>
+</html>
