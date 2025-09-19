@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form태그</title>
+</head>
+<body>
+  <!--양식-->
+  <form action="#" method="">
+
+    <div>
+      <span>아이디</span>
+      <input 
+        type="text" placeholder="아이디를 입력하세요"
+        name="memberId" id="member-id"
+      />
+    </div>
+
+    <div>
+      <span>비밀번호</span>
+      <input 
+        type="password" placeholder="8글자 이상, 대문자, 특수문자 포함"
+        name="memberPw" id="member-pw"
+      />
+    </div>
+
+    <fieldset>
+      <legend>학과명</legend>
+      <input type="text" name="department" list="dep-list" />
+      <datalist id="dep-list">
+        <option value="컴퓨터 공학과"></option>
+        <option value="영어영문과"></option>
+        <option value="경영학과"></option>
+        <option value="사회체육과"></option>
+      </datalist>
+    </fieldset>
+    
+    <textarea name="" id="" style="resize: none;" rows="4" cols="50"></textarea>
+
+    <fieldset>
+      <legend>성별</legend>
+      <div>
+        <label><input type="radio" name="gender" value="선택안함">선택 안함</label>
+        <label><input type="radio" name="gender" value="여성">여성</label>
+        <label><input type="radio" name="gender" value="남성">남성</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>취미</legend>
+      <div>
+        <label><input type="checkbox" name="hobbies" value="영화감상"/>영화감상</label>
+        <label><input type="checkbox" name="hobbies" value="밥먹기"/>밥먹기</label>
+        <label><input type="checkbox" name="hobbies" value="게임하기"/>게임하기</label>
+        <label><input type="checkbox" name="hobbies" value="코딩하기"/>코딩하기</label>
+        <label><input type="checkbox" name="hobbies" value="프로그래밍공부"/>프로그래밍공부</label>
+        <label><input type="checkbox" name="hobbies" value="노래듣기"/>노래듣기</label>
+        <label><input type="checkbox" name="hobbies" value="유튜브보기"/>유튜브보기</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>학과선택</legend>
+      <select name="major">
+        <option value="computer">컴퓨터공학과</option>
+        <option value="model">모델학과</option>
+        <option value="nurse">간호학과</option>
+        <option value="music">실용음악과</option>
+        <option value="mechanic">기계공학과</option>
+        <option value="messcom">신문방송학과</option>
+        <option value="management">경영학과</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>파일 첨부</legend>
+
+      <label for="img"><img src="./imges/ico_add.png" alt="추가" /></label>
+      <input type="file" name="img" id="img" style="display: none;"/>
+    </fieldset>
+
+    <fieldset>
+      <legend>그 외 속성 타입</legend>
+      <div>
+        <span>색상</span><input type="color" name="color" />
+      </div>
+      <div>
+        <span>이메일</span><input type="email" name="email" />
+      </div>
+      <div>
+        <span>연락처</span><input type="tel" name="tel" />
+      </div>
+      <div>
+        <span>날짜</span><input type="date" name="date" />
+        <span>날짜</span><input type="datetime-local" name="datetime-local" />
+      </div>
+      <div>
+        <span>참여인원</span>
+        <input type="number" name="number" value="1" min="0" max="100" step="5"
+         />
+      </div>
+      <div>
+        <span>단계(상,중,하)</span>
+        <input type="range" name="range" value="1" min="1" max="3"
+         />
+      </div>
+    </fieldset>
+
+    <!--아무것도 적지 않았을때 submit-->
+    <button type="submit">전송</button>
+    
+    <button type="reset">리셋</button>
+    
+    <button type="button">버튼</button>
+  </form>
+</body>
+</html>
